@@ -1,6 +1,5 @@
 package com.deceax.databinding;
 
-import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import com.deceax.databinding.model.Status;
@@ -13,6 +12,10 @@ public class ClickHandler {
     }
 
     public void onClick(View view) {
-        Snackbar.make(view, "Item click", Snackbar.LENGTH_LONG).show();
+        if (status.getObservableQuotedStatus().get() == null) {
+            status.updateQuotedStatus();
+        } else {
+            status.clearQuotedStatus();
+        }
     }
 }
