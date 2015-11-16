@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,6 +9,10 @@
         <variable
             name="status"
             type="com.deceax.databinding.model.Status" />
+
+        <variable
+            name="glide"
+            type="com.bumptech.glide.Glide" />
 
     </data>
 
@@ -24,7 +29,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_margin="8dip"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            app:imageUrl="@{glide.load(status.imageUrl).into(this)}" />
 
         <TextView
             android:id="@+id/status_name"
