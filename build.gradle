@@ -6,6 +6,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.3.0'
+        classpath "com.android.databinding:dataBinder:1.0-rc1"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,6 +17,25 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+def twitterProperties = loadTwitterProperties()
+
+ext {
+    twitterConsumerKey = twitterProperties.getProperty('oauth.consumerKey')
+    twitterConsumerSecret = twitterProperties.getProperty('oauth.consumerSecret')
+    twitterAccessKey = twitterProperties.getProperty('oauth.accessToken')
+    twitterAccessSecret = twitterProperties.getProperty('oauth.accessTokenSecret')
+}
+
+def loadTwitterProperties() {
+    return loadTwitterFromLocalProperties()
+}
+
+def loadTwitterFromLocalProperties() {
+    Properties localProperties = new Properties()
+    localProperties.load(project.rootProject.file('twitter4j.properties').newDataInputStream())
+    return localProperties;
 }
 
 task clean(type: Delete) {
