@@ -10,10 +10,6 @@
             name="status"
             type="com.deceax.databinding.model.Status" />
 
-        <variable
-            name="glide"
-            type="com.bumptech.glide.Glide" />
-
     </data>
 
     <RelativeLayout
@@ -30,7 +26,7 @@
             android:layout_alignParentTop="true"
             android:layout_margin="8dip"
             android:contentDescription="@null"
-            app:imageUrl="@{glide.load(status.imageUrl).into(this)}" />
+            app:imageUrl="@{status.imageUrl}" />
 
         <TextView
             android:id="@+id/status_name"
