@@ -24,12 +24,13 @@ public class MainActivity extends AppCompatActivity implements TwitterConsumer {
         list.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         adapter = StatusAdapter.newInstance();
         list.setAdapter(adapter);
+
+        twitterClient = TwitterClient.newInstance(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        twitterClient = TwitterClient.newInstance(this);
         twitterClient.connect();
     }
 

@@ -59,7 +59,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignStart="@id/status_name"
             android:layout_below="@id/status_name"
-            android:maxLines="2"
+            android:maxLines="3"
             android:singleLine="false"
             android:text="@{status.text}" />
 
