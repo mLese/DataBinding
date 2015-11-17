@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.android.databinding'
 
 android {
     compileSdkVersion 23
@@ -10,6 +11,11 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        buildConfigField 'String', 'TWITTER_CONSUMER_KEY', "\"${twitterConsumerKey}\""
+        buildConfigField 'String', 'TWITTER_CONSUMER_SECRET', "\"${twitterConsumerSecret}\""
+        buildConfigField 'String', 'TWITTER_ACCESS_KEY', "\"${twitterAccessKey}\""
+        buildConfigField 'String', 'TWITTER_ACCESS_SECRET', "\"${twitterAccessSecret}\""
     }
     buildTypes {
         release {
@@ -17,10 +23,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:support-annotations:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'org.twitter4j:twitter4j-core:4.0.4'
+    compile 'org.twitter4j:twitter4j-async:4.0.4'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+
 }
